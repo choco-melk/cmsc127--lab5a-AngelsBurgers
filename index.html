@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' href='stylesheet.css'>
+    <title>DOTA 2 Heroes</title>
+</head>
+<body>
+    <div id='body-overlay'></div>
+    <header>
+        <div id="header-overlay"></div>
+        <section>
+            <div id="logo-container">
+                <img src='images/dota2-logo.png'>
+                <h3>DOTA 2</h3>
+            </div>
+            <h4 id='subsection-container'>CHOOSE YOUR HERO</h4>
+        </section>
+        <form>
+            <input id='search-bar' type='text' placeholder='Search Hero'>
+        </form>        
+    </header>
+    <div id='choose-hero-section'>
+        <aside id='filter-navigation'>
+            <div class='filter-option selected' id='all-filter'>
+                <img src='images/all-logo.png'>
+                <h4>All</h4>
+            </div>
+            <div class='filter-option' id='strength-filter'>
+                <img src='images/strength-logo.png'>
+                <h4>Strength</h4>
+            </div>
+            <div class='filter-option' id='agility-filter'>
+                <img src='images/agility-logo.png'>
+                <h4>Agility</h4>
+            </div>
+            <div class='filter-option' id='intelligence-filter'>
+                <img src='images/intelligence-logo.png'>
+                <h4>Intelligence</h4>
+            </div>
+            <div class='filter-option' id='universal-filter'>
+                <img src='images/universal-logo.png'>
+                <h4>Universal</h4>
+            </div>
+        </aside>
+        <section id='hero-gallery'>
+        </section>
+    </div>
+    <div id='content-section'>
+        <div id='content-display'>
+            <div id='content-text-section'>
+                <h1 id='hero-name'></h1>
+                <h3 id='hero-primary-attr'></h3>
+                <br>
+                <h4>Attack Type</h3>
+                <h4 id='hero-attack-type'></h4>
+                <br>
+                <h4>Roles</h4>
+                <div id='hero-roles'>
+                </div>
+            </div>
+            <img id='hero-image'>
+        </div>
+    </div>
+</body>
+<script src='scripts.js'></script>
+</html>
+
+<!-- https://cdn.akamai.steamstatic.com/apps/dota2/images/dota_react/heroes/icons/antimage.png? -->

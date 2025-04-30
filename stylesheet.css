@@ -1,0 +1,215 @@
+@font-face {
+    font-family: "FSBenjamin-Medium";
+    src: url("https://db.onlinewebfonts.com/t/f26ce0d57c1986db67955694770d4ea9.eot");
+    src: url("https://db.onlinewebfonts.com/t/f26ce0d57c1986db67955694770d4ea9.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/f26ce0d57c1986db67955694770d4ea9.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/f26ce0d57c1986db67955694770d4ea9.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/f26ce0d57c1986db67955694770d4ea9.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/f26ce0d57c1986db67955694770d4ea9.svg#FSBenjamin-Medium")format("svg");
+}
+@font-face {
+    font-family: "FSBenjamin-Regular";
+    src: url("https://db.onlinewebfonts.com/t/dccef936d9a262d29823fe43dcbaa0f2.eot");
+    src: url("https://db.onlinewebfonts.com/t/dccef936d9a262d29823fe43dcbaa0f2.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/dccef936d9a262d29823fe43dcbaa0f2.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/dccef936d9a262d29823fe43dcbaa0f2.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/dccef936d9a262d29823fe43dcbaa0f2.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/dccef936d9a262d29823fe43dcbaa0f2.svg#FSBenjamin-Regular")format("svg");
+}
+@keyframes smooth-fade {   
+    0% {
+        transform: translateY(100px);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+body, body * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+img {
+    display: block;
+}
+
+body {
+    background-image: url("images/dota2-bg.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+}
+h1, h2, h3, h4 {
+    font-family: 'FSBenjamin-Medium';
+}
+h1 {
+    font-size: 5rem;
+}
+h2 {
+    font-size: 3rem;
+}
+h3 {
+    font-size: 2rem;
+}
+h4 {
+    font-size: 1.2rem;
+}
+
+/* Sections */
+#choose-hero-section {
+    display: block;
+}
+#content-section {
+    display: none;
+}
+
+/* Document Styles */
+#body-overlay {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: black;
+    opacity: 50%;
+}
+
+header {
+    width: 100vw;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 3em;
+    background-image: url("images/dota2-bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    
+    #header-overlay {
+        width: 100vw;
+        height: inherit;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-color: black;
+        opacity: 50%;
+    }
+    #logo-container {
+        display: flex;
+        justify-content: left;
+        cursor: pointer;
+    }
+    #subsection-container {
+        margin-left: 37px;
+    }
+    img[src='images/dota2-logo.png'] {
+        height: 32px;
+        aspect-ratio: 1/1;
+        margin-right: 5px;
+    }
+    #search-bar{
+        height: 2.5em;
+        width: 34ch;
+        padding: 0em 1em;
+        border-radius: 25px;
+        font-family: 'FSBenjamin-Regular';
+    }    
+}
+
+#filter-navigation {
+    width: 200px;
+    position: fixed;
+    left: 8em;
+    top: 10em;
+    .filter-option {
+        width: fit-content;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        padding: 10px 0px;
+        margin-bottom: 10px;
+        filter: brightness(60%);
+        cursor: pointer;
+    }  
+    .selected, .filter-option:hover {
+        filter: none;
+    }
+    
+    .filter-option img {
+        height: 34px;    
+    }
+    .filter-option img[src='images/all-logo.png']{
+        height: 34px;
+        padding: 5.5px 5.5px;
+        margin: 0px 5px;
+        aspect-ratio: 1/1;
+    }
+}
+
+#hero-gallery {
+    animation: smooth-fade 1.7s ease 1;
+    padding-left: 22em;
+    padding-top: 10em;
+    padding-right: 8rem;
+    padding-bottom: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 256px);
+    figure {
+        display: flex;
+        justify-content: left;
+        align-items: flex-end;
+        aspect-ratio: 16/9;
+        border-radius: 5px;
+        margin: 10px;
+        filter: brightness(60%); 
+        cursor: pointer;
+        font-family: 'FSBenjamin-Medium';
+        font-size: 1.5rem;
+        padding: 0.2em;
+        transition: transform 0.3s;
+        text-shadow:
+        0.04em 0 rgb(41, 41, 41),
+        0 0.04em  rgb(41, 41, 41),
+        -0.04em 0  rgb(41, 41, 41),
+        0 -0.04em  rgb(41, 41, 41);
+    }
+    figure:hover {
+        filter: brightness(100%);
+        transform: scale(1.1);
+
+    }
+}
+
+#content-display {
+    padding-top: 10em;
+    padding-inline:  10em;
+    padding-bottom: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap-reverse;
+    
+    #hero-image {
+        height: 288px;
+        aspect-ratio: 16/9;
+        margin-left: 90px;
+        border-radius: 5px;
+    }
+
+}
+
+
+
+
+
+
+
