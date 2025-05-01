@@ -190,26 +190,93 @@ header {
 }
 
 #content-display {
-    padding-top: 10em;
-    padding-inline:  10em;
-    padding-bottom: 5em;
+    padding-top: 5em;
+    padding-inline: 5em;
+    padding-bottom: 3em;
     display: flex;
-    justify-content: center;
-    align-items: start;
-    flex-wrap: wrap-reverse;
-    
-    #hero-image {
-        height: 288px;
-        aspect-ratio: 16/9;
-        margin-left: 90px;
-        border-radius: 5px;
-    }
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.219);
+    color: white;
+}
+
+#content-text-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    line-height: 1.2; 
+}
+
+#hero-name {
+    font-size: 3.5rem;
+    font-weight: bold;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 1.4em;
+    margin-left: 2em;
+    color: white;
 
 }
 
+#hero-primary-attr {
+    font-size: 2rem;
+    margin-bottom: 0.1em;
+    color: #ccc;
+    margin-left: 3.5em;
+}
 
+#attack-type-text {
+    margin-left: 6em;
+    font-weight: bold;
+    color: yellowgreen;
+}
 
+#hero-attack-type {
+    font-size: 1.2rem;
+    margin-bottom: 0.5em;
+    color: #aaa;
+    margin-left: 7em;
+}
 
+#roles-text {
+    margin-left: 6em;
+    color: yellowgreen;
+}
 
+#hero-roles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    color: #aaa;
+    margin-left: 8em;
+}
 
+#hero-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin-bottom: 2em;
+    display: block; 
+    
+}
 
+@media (min-width: 768px) {
+    #content-display {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    #content-text-section {
+        align-items: flex-start;
+        width: 50%;
+    }
+    
+    #hero-image {
+        width: 45%;
+        margin-left: 2em;
+        margin-top: 5em;
+    }
+}

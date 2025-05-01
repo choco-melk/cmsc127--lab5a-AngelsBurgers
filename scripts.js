@@ -130,6 +130,7 @@ async function main() {
         display_elements(universalHeroes);
         setActiveFilter(universalFilter);    
     });
+    
     function displayContent(id) {
         let displayedHero = null;
         for (hero of allHeroes) {
@@ -156,7 +157,13 @@ async function main() {
                 break;
         }
         heroAtkType.innerText = displayedHero.attack_type;
-        heroImg.setAttribute('style', `background-image: url("https://cdn.akamai.steamstatic.com${displayedHero.img}"); background-size: cover;`);
+        
+        // Change this line
+        // From: heroImg.setAttribute('style', `background-image: url("https://cdn.akamai.steamstatic.com${displayedHero.img}"); background-size: cover;`);
+        // To:
+        heroImg.src = `https://cdn.akamai.steamstatic.com${displayedHero.img}`;
+        heroImg.alt = displayedHero.localized_name;
+        
         heroRoles.innerText = "";
         let text = ""; 
         for (role of displayedHero.roles) {
