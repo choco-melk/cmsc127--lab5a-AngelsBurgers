@@ -21,10 +21,6 @@ async function main() {
     const intelligenceHeroes = allHeroes.filter(hero => hero.primary_attr == 'int');
     const universalHeroes = allHeroes.filter(hero => hero.primary_attr == 'all');
 
-    /* Sections */
-    const heroSelectSection = document.getElementById('choose-hero-section');
-    const heroContentSection = document.getElementById('content-section');
-
     /* Hero Character Selection */
     const allFilter = document.getElementById('all-filter'); 
     const strengthFilter = document.getElementById('strength-filter'); 
@@ -34,35 +30,60 @@ async function main() {
     const searchBar = document.getElementById('search-bar')
     const gallery = document.getElementById('hero-gallery');
     const home = document.getElementById('logo-container');
-
+    const heroShow = document.getElementById('hero-selected');
+    
     /* Hero Content Section*/
+    const closeButton = document.getElementById('close-button');
     const heroName = document.getElementById('hero-name');
+    const imgAttr = document.getElementById('primary-attr-image');
     const heroAttr = document.getElementById('hero-primary-attr');
+    const imgAtkType = document.getElementById('attack-type-image');
     const heroAtkType = document.getElementById('hero-attack-type');
     const heroRoles = document.getElementById('hero-roles');
     const heroImg = document.getElementById('hero-image');
     console.log(heroImg);
-    
-    /* | FUNCTIONS */
-    function setActiveSection(section) {
-        if (section === heroContentSection) {
-            heroSelectSection.style.display = 
-                searchBar.style.display = 'none';            
+      
+    function playHoverSound() {
+        var audioArr = document.getElementsByTagName('audio');
+        audioArr[0].cloneNode().play()
+        
+    }
+
+    activeToggle = false;
+    currentHero = null;
+    function toggleContent() {
+        if (activeToggle) {
+            currentHero = null;
+            heroShow.style.display = 'none';
+            gallery.style.paddingRight = '3em';
         } else {
-            heroContentSection.style.display = 'none'; 
-        }
-        section.style.display = 'block'; 
-    }    
+            heroShow.style.display = 'block';
+            gallery.style.paddingRight = '25em';
+        }               
+        activeToggle = !activeToggle;
+    }
+
     function display_elements(heroList = allHeroes) {
         gallery.innerText = "";   
-
         for (let hero of heroList) {
             const newTab = document.createElement('figure');
             newTab.setAttribute('style', `background-image: url("https://cdn.akamai.steamstatic.com${hero.img}"); background-size: cover;`);
-            newTab.innerText = hero.localized_name;
+            newTab.innerHTML = `\
+                <h4>${hero.localized_name}</h4>\
+                <img src='https://cdn.akamai.steamstatic.com${hero.icon}'> 
+            `; 
+
             newTab.addEventListener('click', e => {
-                setActiveSection(heroContentSection);
+                if (currentHero == null || currentHero === hero.id) {
+                    currentHero = hero.id;
+                    toggleContent();
+                }
+                currentHero = hero.id;
                 displayContent(hero.id);
+                
+            });
+            newTab.addEventListener('mouseenter', () => {
+                playHoverSound() 
             });
             gallery.append(newTab);
         }
@@ -97,6 +118,23 @@ async function main() {
             const newTab = document.createElement('figure');
             newTab.setAttribute('style', `background-image: url("https://cdn.akamai.steamstatic.com${hero.img}"); background-size: cover;`);
             newTab.innerText = hero.localized_name;
+            newTab.innerHTML = `\
+                <h4>${hero.localized_name}</h4>\
+                <img src='https://cdn.akamai.steamstatic.com${hero.icon}'> 
+            `; 
+
+            newTab.addEventListener('click', e => {
+                if (currentHero == null || currentHero === hero.id) {
+                    currentHero = hero.id;
+                    toggleContent();
+                }
+                currentHero = hero.id;
+                displayContent(hero.id);
+                
+            });
+            newTab.addEventListener('mouseenter', () => {
+                playHoverSound() 
+            });
             gallery.append(newTab);
         }
     });
@@ -106,8 +144,6 @@ async function main() {
         currentActive.classList.remove("selected");
         currentActive = filter;
         currentActive.classList.add("selected");
-        gallery.style.animation = none;
-        gallery.style.animation = "smooth-fade 1.7s ease 1;";
         searchBar.value = '';
     }
     allFilter.addEventListener("click", e => {
@@ -131,6 +167,10 @@ async function main() {
         setActiveFilter(universalFilter);    
     });
     
+    closeButton.addEventListener('click', e => {
+        toggleContent();  
+    })
+
     function displayContent(id) {
         let displayedHero = null;
         for (hero of allHeroes) {
@@ -142,34 +182,56 @@ async function main() {
         heroName.innerText = displayedHero.localized_name.toUpperCase();
         switch (displayedHero.primary_attr) {
             case "str":
+                imgAttr.setAttribute('src', 'images/strength.webp');
                 heroAttr.innerText = "Strength";
+                heroAttr.style.color ='rgb(211, 53, 1)';
+
                 break;
-            case "int":
+            case "int": 
+                imgAttr.setAttribute('src', 'images/intelligence.webp');
                 heroAttr.innerText = "Intelligence";
+                heroAttr.style.color ='rgb(1, 154, 165)';
+
                 break;
             case "agi":
+                imgAttr.setAttribute('src', 'images/agility.webp');
                 heroAttr.innerText = "Agility";
+                heroAttr.style.color ='rgb(46, 207, 51)';
+
                 break;
             case "all":
+                imgAttr.setAttribute('src', 'images/universal.webp');
                 heroAttr.innerText = "Universal";
+                heroAttr.style.color ='rgb(254, 255, 207)';
+
                 break;    
             default:
                 break;
         }
+        
+        switch (displayedHero.attack_type) {
+            case "Melee":
+                console.log(displayedHero.attack_type);
+                imgAtkType.setAttribute('src', 'images/melee.png');
+                break;
+            case "Ranged":
+                console.log(displayedHero.attack_type);
+                imgAtkType.setAttribute('src', 'images/ranged.png');
+                break; 
+            default:
+                break;
+        }
         heroAtkType.innerText = displayedHero.attack_type;
-        
-        // Change this line
-        // From: heroImg.setAttribute('style', `background-image: url("https://cdn.akamai.steamstatic.com${displayedHero.img}"); background-size: cover;`);
-        // To:
-        heroImg.src = `https://cdn.akamai.steamstatic.com${displayedHero.img}`;
-        heroImg.alt = displayedHero.localized_name;
-        
+        heroImg.setAttribute('style', `background-image: url("https://cdn.akamai.steamstatic.com${displayedHero.img}"); background-size: cover;`);
+
         heroRoles.innerText = "";
-        let text = ""; 
+        let text = "";
+
         for (role of displayedHero.roles) {
             const roleDisplay = document.createElement("h4");
             roleDisplay.innerText = role;
             heroRoles.append(roleDisplay); 
+            
         }
     }
 

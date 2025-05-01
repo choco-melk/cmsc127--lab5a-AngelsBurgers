@@ -10,58 +10,63 @@
     <div id='body-overlay'></div>
     <header>
         <div id="header-overlay"></div>
-        <section>
-            <div id="logo-container">
-                <img src='images/dota2-logo.png'>
-                <h3>DOTA 2</h3>
-            </div>
-            <h4 id='subsection-container'>CHOOSE YOUR HERO</h4>
-        </section>
+        <a href="https://www.dota2.com/home">
+        <div id="logo-container">
+            <img src='images/dota2-logo.png'>
+            <h2>DOTA 2</h2>
+        </div>
+        </a>
         <form>
             <input id='search-bar' type='text' placeholder='Search Hero'>
         </form>        
     </header>
+    <h1 id='section-label'>CHOOSE YOUR HERO</h1>
     <div id='choose-hero-section'>
         <aside id='filter-navigation'>
             <div class='filter-option selected' id='all-filter'>
                 <img src='images/all-logo.png'>
-                <h4>All</h4>
+                <h3>All</h3>
             </div>
             <div class='filter-option' id='strength-filter'>
                 <img src='images/strength-logo.png'>
-                <h4>Strength</h4>
+                <h3>Strength</h3>
             </div>
             <div class='filter-option' id='agility-filter'>
                 <img src='images/agility-logo.png'>
-                <h4>Agility</h4>
+                <h3>Agility</h3>
             </div>
             <div class='filter-option' id='intelligence-filter'>
                 <img src='images/intelligence-logo.png'>
-                <h4>Intelligence</h4>
+                <h3>Intelligence</h3>
             </div>
             <div class='filter-option' id='universal-filter'>
                 <img src='images/universal-logo.png'>
-                <h4>Universal</h4>
+                <h3>Universal</h3>
             </div>
         </aside>
-        <section id='hero-gallery'>
+        <audio src="./hover.mp3" class="enter"  preload="metadata" allow="autoplay"></audio>
+        <section id="hero-selection-container">
+            <section id='hero-gallery'>
+            </section>
         </section>
-    </div>
-    <div id='content-section'>
-        <div id='content-display'>
-            <div id='content-text-section'>
-                <h1 id='hero-name'></h1>
+        <aside id="hero-selected">
+            <img src='images/exit.png' id='close-button'>
+            <img id="hero-image">
+            <h2 id='hero-name'></h2>
+            <div id='primary-attr'>
+                <img id="primary-attr-image">
                 <h3 id='hero-primary-attr'></h3>
-                <br>
-                <h4 id='attack-type-text'>Attack Type</h4>
-                <h4 id='hero-attack-type'></h4>
-                <br>
-                <h4 id='roles-text'>Roles</h4>
-                <div id='hero-roles'>
-                </div>
             </div>
-            <<img id="hero-image" src="path-to-your-hero-image.jpg" alt="Hero portrait">>
-        </div>
+            <br>
+            <h4 id='attack-type-text'>Attack Type</h4>
+            <div id='attack-type'>
+                <img id="attack-type-image">
+                <h4 id='hero-attack-type'></h4>
+            </div>
+            <br>
+            <h4 id='roles-text'>Roles</h4>
+            <div id='hero-roles'>
+        </aside>
     </div>
 </body>
 <script src='scripts.js'></script>
